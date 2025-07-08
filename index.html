@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ghibli Poster</title>
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Spectral', serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-color: #f4f4f4;
+    }
+    .poster {
+      position: relative;
+      width: 90vw;
+      max-width: 800px;
+      border: 8px solid #333;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+      background-color: white;
+    }
+    .poster img {
+      width: 100%;
+      display: block;
+    }
+    .caption {
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 1.25rem;
+      color: #222;
+      background: linear-gradient(to bottom, #ffffff 0%, #f8f8f8 100%);
+      min-height: 160px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .caption em {
+      font-style: italic;
+      color: #555;
+      transition: opacity 0.5s ease-in-out;
+    }
+    @media (max-width: 600px) {
+      .caption {
+        font-size: 1rem;
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="poster">
+    <img src="ghibli countryside.jpg" alt="Countryside in Japan" />
+    <div class="caption">
+      <em id="quote"></em>
+    </div>
+  </div>
+
+  <script>
+    const quotes = [
+      "I love the juxtaposition of the upright concrete utility poles against the soft geometry of the rice fields — industrial bones quietly threading through rural veins.",
+      "It's that tension — wires overhead, earth below — that gives it that liminal Ghibli feel.",
+      "Like the world hasn't quite chosen between staying analog or waking up magical.",
+      "The way the electric poles slice the sky just enough to remind you it's 20XX, not 1953. It's pastoral modernity. It's melancholy in 1080p.",
+      "Its stillness isn’t absence — it’s restraint. The fields whisper what the power lines interrupt.",
+    "Notice how the clouds aren’t just background — they’re participants in the tension between machine and meadow.",
+    "This isn’t a photo of a place; it’s a negotiation between time periods that haven’t met yet.",
+    "Even the weeds by the roadside are curated. That’s not overgrowth — that’s intentional chaos.",
+    "The symmetry feels accidental, like the land arranged itself when no one was looking."
+    ];
+
+    let index = 0;
+    const quoteEl = document.getElementById('quote');
+
+    function showQuote() {
+      quoteEl.style.opacity = 0;
+      setTimeout(() => {
+        quoteEl.textContent = quotes[index];
+        quoteEl.style.opacity = 1;
+        index = (index + 1) % quotes.length;
+      }, 500);
+    }
+
+    showQuote();
+    setInterval(showQuote, 5000);
+  </script>
+</body>
+</html>
