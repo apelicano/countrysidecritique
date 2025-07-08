@@ -11,6 +11,7 @@
       padding: 0;
       font-family: 'Spectral', serif;
       display: flex;
+      flex-direction: column; /* Add this line */
       align-items: center;
       justify-content: center;
       height: 100vh;
@@ -62,15 +63,15 @@
 
   <script>
     const quotes = [
-      "I love the juxtaposition of the upright concrete utility poles against the soft geometry of the rice fields — industrial bones quietly threading through rural veins.",
-      "It's that tension — wires overhead, earth below — that gives it that liminal Ghibli feel.",
-      "Like the world hasn't quite chosen between staying analog or waking up magical.",
-      "The way the electric poles slice the sky just enough to remind you it's 20XX, not 1953. It's pastoral modernity. It's melancholy in 1080p.",
-      "Its stillness isn’t absence — it’s restraint. The fields whisper what the power lines interrupt.",
-    "Notice how the clouds aren’t just background — they’re participants in the tension between machine and meadow.",
-    "This isn’t a photo of a place; it’s a negotiation between time periods that haven’t met yet.",
-    "Even the weeds by the roadside are curated. That’s not overgrowth — that’s intentional chaos.",
-    "The symmetry feels accidental, like the land arranged itself when no one was looking."
+        "I love the juxtaposition of the upright concrete utility poles against the soft geometry of the rice fields — industrial bones quietly threading through rural veins.",
+        "It's that tension — wires overhead, earth below — that gives it that liminal Ghibli feel.",
+        "Like the world hasn't quite chosen between staying analog or waking up magical.",
+        "The way the electric poles slice the sky just enough to remind you it's 20XX, not 1953. It's pastoral modernity. It's melancholy in 1080p.",
+        "Its stillness isn’t absence — it’s restraint. The fields whisper what the power lines interrupt.",
+        "Notice how the clouds aren’t just background — they’re participants in the tension between machine and meadow.",
+        "This isn’t a photo of a place; it’s a negotiation between time periods that haven’t met yet.",
+        "Even the weeds by the roadside are curated. That’s not overgrowth — that’s intentional chaos.",
+        "The symmetry feels accidental, like the land arranged itself when no one was looking."
     ];
 
     let index = 0;
@@ -88,5 +89,10 @@
     showQuote();
     setInterval(showQuote, 5000);
   </script>
+  <!-- responsive link to `schedule.html` at the bottom of the page, below `div class="poster"` ; should always be visible no matter how the browser window is resized-->
+  <div class="responsive-link">
+    <a href="schedule.html" style="display: block; text-align: center; padding: 1rem; background-color: #333; color: white; text-decoration: none; font-weight: bold;">View Weekly Class Schedule</a>
+  </div>
+
 </body>
 </html>
