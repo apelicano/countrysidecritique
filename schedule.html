@@ -17,6 +17,18 @@
     color: #444;
   }
 
+h2 {
+  position: sticky;
+  top: 0;
+  background-color: rgba(249, 249, 249, 0.10); /* semi-transparent */
+  backdrop-filter: blur(2px); /* optional: subtle blur behind text */
+  z-index: 1;
+  padding: 0.5rem 1rem;
+  margin: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+
   table {
     width: 100%;
     border-collapse: collapse;
@@ -77,6 +89,7 @@
 
   <h1>📚 Weekly Class Schedule</h1>
 
+  <section>
   <h2>Monday</h2>
   <table>
     <tr><th>Time</th><th>Subject</th><th>Mode</th><th>Room</th></tr>
@@ -85,7 +98,9 @@
     <tr><td>12:00–14:00</td><td>Biology 1 (SHSS-SPE 115)</td><td class="online">Online</td><td>—</td></tr>
     <tr><td>15:00–16:30</td><td>Oral Communication (SHS-ENG 111)</td><td class="online">Online</td><td>—</td></tr>
   </table>
+  </section>
 
+  <section>
   <h2>Tuesday</h2>
   <table>
     <tr><th>Time</th><th>Subject</th><th>Mode</th><th>Room</th></tr>
@@ -94,7 +109,9 @@
     <tr><td>11:00–12:00</td><td>Filipino (SHS-FIL 111)</td><td class="onsite">Onsite</td><td>H411</td></tr>
     <tr><td>13:00–14:00</td><td>PE & Health (SHS-PEH 111)</td><td class="onsite">Onsite</td><td>H411</td></tr>
   </table>
+  </section>
 
+  <section>
   <h2>Wednesday</h2>
   <table>
     <tr><th>Time</th><th>Subject</th><th>Mode</th><th>Room</th></tr>
@@ -103,7 +120,9 @@
     <tr><td>10:30–12:00</td><td>Oral Communication (SHS-ENG 111)</td><td class="onsite">Onsite</td><td>H411</td></tr>
     <tr><td>15:30–16:30</td><td>Practical Research 1 (SHS-RES 211)</td><td class="onsite">Onsite</td><td>H411</td></tr>
   </table>
+  </section>
 
+  <section>
   <h2>Thursday</h2>
   <table>
     <tr><th>Time</th><th>Subject</th><th>Mode</th><th>Room</th></tr>
@@ -113,7 +132,9 @@
     <tr><td>13:30–15:00</td><td>Filipino (SHS-FIL 111)</td><td class="online">Online</td><td>—</td></tr>
     <tr><td>15:00–16:30</td><td>Practical Research 1 (SHS-RES 211)</td><td class="online">Online</td><td>—</td></tr>
   </table>
+  </section>
 
+  <section>
   <h2>Friday</h2>
   <table>
     <tr><th>Time</th><th>Subject</th><th>Mode</th><th>Room</th></tr>
@@ -123,6 +144,7 @@
     <tr><td>14:30–15:30</td><td>Computing & IT Fundamentals (SHS-IT-VF 111)</td><td class="onsite">Onsite</td><td>H411</td></tr>
     <tr><td>15:30–16:30</td><td>Oral Communication (SHS-ENG 111)</td><td class="onsite">Onsite</td><td>H411</td></tr>
   </table>
+  </section>
 
   <p><strong>Legend:</strong> 🏫 Onsite &nbsp;&nbsp; 🌐 Online (Zoom or asynchronous)</p>
 
