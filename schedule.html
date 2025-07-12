@@ -4,38 +4,73 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Weekly Class Schedule</title>
-  <style>
+<style>
+  /* Universal box-sizing reset */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  :root {
+    --bg-light: #f9f9f9;
+    --text-light: #333;
+    --bg-dark: #121212;
+    --text-dark: #f5f5f5;
+    --table-light: #ffffff;
+    --table-dark: #1e1e1e;
+    --header-light: #f0f0f0;
+    --header-dark: #2c2c2c;
+    --hover-light: #f5f5f5;
+    --hover-dark: #333;
+  }
+
   body {
+    margin: 0;
+    padding: 1rem;
     font-family: sans-serif;
-    margin: 2rem;
-    background: #f9f9f9;
-    color: #333;
+    background: var(--bg-light);
+    color: var(--text-light);
+    transition: background 0.4s ease, color 0.4s ease;
+  }
+
+  body.dark {
+    background: var(--bg-dark);
+    color: var(--text-dark);
   }
 
   h1, h2 {
     text-align: center;
-    color: #444;
+    color: inherit;
   }
 
-h2 {
-  position: sticky;
-  top: 0;
-  background-color: rgba(249, 249, 249, 0.10); /* semi-transparent */
-  backdrop-filter: blur(2px); /* optional: subtle blur behind text */
-  z-index: 1;
-  padding: 0.5rem 1rem;
-  margin: 0;
-  border-bottom: 1px solid #ddd;
-}
+  h2 {
+    position: sticky;
+    top: 0;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(2px);
+    z-index: 1;
+    padding: 0.5rem 1rem;
+    margin: 0;
+    border-bottom: 1px solid #ddd;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
 
+  body.dark h2 {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-bottom: 1px solid #444;
+  }
 
   table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 2rem;
-    background: #fff;
+    background: var(--table-light);
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
     animation: fadeInUp 0.6s ease both;
+    transition: background 0.4s ease, color 0.4s ease;
+  }
+
+  body.dark table {
+    background: var(--table-dark);
   }
 
   th, td {
@@ -45,23 +80,29 @@ h2 {
     min-width: 100px;
     max-width: 300px;
     word-wrap: break-word;
+    transition: background 0.4s ease, color 0.4s ease;
   }
 
-  /* th {
-    background-color: #f0f0f0;
-  } */
-
   th {
-  background-color: #f0f0f0;
-  position: sticky;
-  top: 0;
-  z-index: 2;
-}
+    background-color: var(--header-light);
+    position: sticky;
+    top: 0;
+    z-index: 2;
+  }
 
+  body.dark th {
+    background-color: var(--header-dark);
+    color: var(--text-dark);
+    border-color: #555;
+  }
 
   tr:hover {
-    background-color: #f5f5f5;
+    background-color: var(--hover-light);
     transition: background-color 0.3s ease;
+  }
+
+  body.dark tr:hover {
+    background-color: var(--hover-dark);
   }
 
   .onsite::before {
@@ -82,6 +123,56 @@ h2 {
       transform: translateY(0);
     }
   }
+
+  /* Dark mode toggle button */
+  .theme-toggle {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 999;
+    transition: transform 0.2s ease;
+  }
+
+  .theme-toggle:hover {
+    transform: scale(1.2);
+  }
+
+  /* iPhone 7 / small screen tweaks */
+  @media (max-width: 400px) {
+    body {
+      padding: 0.5rem;
+    }
+
+    h1 {
+      font-size: 1.25rem;
+    }
+
+    h2 {
+      font-size: 1rem;
+      background-color: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(3px);
+    }
+
+    body.dark h2 {
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    table {
+      display: block;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      font-size: 0.8rem;
+    }
+
+    th, td {
+      white-space: nowrap;
+      min-width: 80px;
+    }
+  }
 </style>
 
 </head>
@@ -90,63 +181,66 @@ h2 {
   <h1>📚 Weekly Class Schedule</h1>
 
   <section>
-  <h2>Monday</h2>
-  <table>
-    <tr><th>Time</th><th>Subject</th><th>Mode</th><th>Room</th></tr>
-    <tr><td>07:30–09:30</td><td>Pre-Calculus (SHSS-SPE 113)</td><td class="online">Online</td><td>—</td></tr>
-    <tr><td>09:30–11:30</td><td>English for Academic & Professional Purposes (SHS-ENG 121)</td><td class="online">Online</td><td>—</td></tr>
-    <tr><td>12:00–14:00</td><td>Biology 1 (SHSS-SPE 115)</td><td class="online">Online</td><td>—</td></tr>
-    <tr><td>15:00–16:30</td><td>Oral Communication (SHS-ENG 111)</td><td class="online">Online</td><td>—</td></tr>
-  </table>
+    <h2>Monday</h2>
+    <table>
+      <tr><th>Time</th><th>Subject</th><th>Mode</th><th>Room</th></tr>
+      <tr><td>07:30–09:30</td><td>Pre-Calculus (SHSS-SPE 113)</td><td class="online">Online</td><td>—</td></tr>
+      <tr><td>09:30–11:30</td><td>English for Academic & Professional Purposes (SHS-ENG 121)</td><td class="online">Online</td><td>—</td></tr>
+      <tr><td>12:00–14:00</td><td>Biology 1 (SHSS-SPE 115)</td><td class="online">Online</td><td>—</td></tr>
+      <tr><td>15:00–16:30</td><td>Oral Communication (SHS-ENG 111)</td><td class="online">Online</td><td>—</td></tr>
+    </table>
   </section>
 
   <section>
-  <h2>Tuesday</h2>
-  <table>
-    <tr><th>Time</th><th>Subject</th><th>Mode</th><th>Room</th></tr>
-    <tr><td>07:30–09:30</td><td>Pre-Calculus (SHSS-SPE 113)</td><td class="onsite">Onsite</td><td>H411</td></tr>
-    <tr><td>09:30–10:30</td><td>General Mathematics (SHS-MAT 111)</td><td class="onsite">Onsite</td><td>H411</td></tr>
-    <tr><td>11:00–12:00</td><td>Filipino (SHS-FIL 111)</td><td class="onsite">Onsite</td><td>H411</td></tr>
-    <tr><td>13:00–14:00</td><td>PE & Health (SHS-PEH 111)</td><td class="onsite">Onsite</td><td>H411</td></tr>
-  </table>
+    <h2>Tuesday</h2>
+    <table>
+      <tr><th>Time</th><th>Subject</th><th>Mode</th><th>Room</th></tr>
+      <tr><td>07:30–09:30</td><td>Pre-Calculus (SHSS-SPE 113)</td><td class="onsite">Onsite</td><td>H411</td></tr>
+      <tr><td>09:30–10:30</td><td>General Mathematics (SHS-MAT 111)</td><td class="onsite">Onsite</td><td>H411</td></tr>
+      <tr><td>11:00–12:00</td><td>Filipino (SHS-FIL 111)</td><td class="onsite">Onsite</td><td>H411</td></tr>
+      <tr><td>13:00–14:00</td><td>PE & Health (SHS-PEH 111)</td><td class="onsite">Onsite</td><td>H411</td></tr>
+    </table>
   </section>
 
   <section>
-  <h2>Wednesday</h2>
-  <table>
-    <tr><th>Time</th><th>Subject</th><th>Mode</th><th>Room</th></tr>
-    <tr><td>07:30–09:00</td><td>Filipino (SHS-FIL 111)</td><td class="onsite">Onsite</td><td>H411</td></tr>
-    <tr><td>09:00–10:30</td><td>General Mathematics (SHS-MAT 111)</td><td class="onsite">Onsite</td><td>H411</td></tr>
-    <tr><td>10:30–12:00</td><td>Oral Communication (SHS-ENG 111)</td><td class="onsite">Onsite</td><td>H411</td></tr>
-    <tr><td>15:30–16:30</td><td>Practical Research 1 (SHS-RES 211)</td><td class="onsite">Onsite</td><td>H411</td></tr>
-  </table>
+    <h2>Wednesday</h2>
+    <table>
+      <tr><th>Time</th><th>Subject</th><th>Mode</th><th>Room</th></tr>
+      <tr><td>07:30–09:00</td><td>Filipino (SHS-FIL 111)</td><td class="onsite">Onsite</td><td>H411</td></tr>
+      <tr><td>09:00–10:30</td><td>General Mathematics (SHS-MAT 111)</td><td class="onsite">Onsite</td><td>H411</td></tr>
+      <tr><td>10:30–12:00</td><td>Oral Communication (SHS-ENG 111)</td><td class="onsite">Onsite</td><td>H411</td></tr>
+      <tr><td>15:30–16:30</td><td>Practical Research 1 (SHS-RES 211)</td><td class="onsite">Onsite</td><td>H411</td></tr>
+    </table>
   </section>
 
   <section>
-  <h2>Thursday</h2>
-  <table>
-    <tr><th>Time</th><th>Subject</th><th>Mode</th><th>Room</th></tr>
-    <tr><td>07:30–09:00</td><td>General Mathematics (SHS-MAT 111)</td><td class="online">Online</td><td>—</td></tr>
-    <tr><td>09:00–10:00</td><td>Computing & IT Fundamentals (SHS-IT-VF 111)</td><td class="online">Online</td><td>—</td></tr>
-    <tr><td>10:30–11:00</td><td>PE & Health (SHS-PEH 111)</td><td class="online">Online</td><td>—</td></tr>
-    <tr><td>13:30–15:00</td><td>Filipino (SHS-FIL 111)</td><td class="online">Online</td><td>—</td></tr>
-    <tr><td>15:00–16:30</td><td>Practical Research 1 (SHS-RES 211)</td><td class="online">Online</td><td>—</td></tr>
-  </table>
+    <h2>Thursday</h2>
+    <table>
+      <tr><th>Time</th><th>Subject</th><th>Mode</th><th>Room</th></tr>
+      <tr><td>07:30–09:00</td><td>General Mathematics (SHS-MAT 111)</td><td class="online">Online</td><td>—</td></tr>
+      <tr><td>09:00–10:00</td><td>Computing & IT Fundamentals (SHS-IT-VF 111)</td><td class="online">Online</td><td>—</td></tr>
+      <tr><td>10:30–11:00</td><td>PE & Health (SHS-PEH 111)</td><td class="online">Online</td><td>—</td></tr>
+      <tr><td>13:30–15:00</td><td>Filipino (SHS-FIL 111)</td><td class="online">Online</td><td>—</td></tr>
+      <tr><td>15:00–16:30</td><td>Practical Research 1 (SHS-RES 211)</td><td class="online">Online</td><td>—</td></tr>
+    </table>
   </section>
 
   <section>
-  <h2>Friday</h2>
-  <table>
-    <tr><th>Time</th><th>Subject</th><th>Mode</th><th>Room</th></tr>
-    <tr><td>07:30–09:30</td><td>Biology 1 (SHSS-SPE 115)</td><td class="onsite">Onsite</td><td>H411</td></tr>
-    <tr><td>10:00–11:30</td><td>Practical Research 1 (SHS-RES 211)</td><td class="onsite">Onsite</td><td>H411</td></tr>
-    <tr><td>12:30–14:30</td><td>English for Academic & Professional Purposes (SHS-ENG 121)</td><td class="onsite">Onsite</td><td>H411</td></tr>
-    <tr><td>14:30–15:30</td><td>Computing & IT Fundamentals (SHS-IT-VF 111)</td><td class="onsite">Onsite</td><td>H411</td></tr>
-    <tr><td>15:30–16:30</td><td>Oral Communication (SHS-ENG 111)</td><td class="onsite">Onsite</td><td>H411</td></tr>
-  </table>
+    <h2>Friday</h2>
+    <table>
+      <tr><th>Time</th><th>Subject</th><th>Mode</th><th>Room</th></tr>
+      <tr><td>07:30–09:30</td><td>Biology 1 (SHSS-SPE 115)</td><td class="onsite">Onsite</td><td>H411</td></tr>
+      <tr><td>10:00–11:30</td><td>Practical Research 1 (SHS-RES 211)</td><td class="onsite">Onsite</td><td>H411</td></tr>
+      <tr><td>12:30–14:30</td><td>English for Academic & Professional Purposes (SHS-ENG 121)</td><td class="onsite">Onsite</td><td>H411</td></tr>
+      <tr><td>14:30–15:30</td><td>Computing & IT Fundamentals (SHS-IT-VF 111)</td><td class="onsite">Onsite</td><td>H411</td></tr>
+      <tr><td>15:30–16:30</td><td>Oral Communication (SHS-ENG 111)</td><td class="onsite">Onsite</td><td>H411</td></tr>
+    </table>
   </section>
 
   <p><strong>Legend:</strong> 🏫 Onsite &nbsp;&nbsp; 🌐 Online (Zoom or asynchronous)</p>
+  <button class="theme-toggle" onclick="document.body.classList.toggle('dark')">
+    🌙
+  </button>
 
 </body>
 </html>
